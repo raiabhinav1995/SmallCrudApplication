@@ -24,6 +24,7 @@
               "src/assets"
             ],
             "styles": [
+              "node_modules/bootstrap/dist/css/bootstrap.min.css",
               "src/styles.css"
             ],
             "scripts": []
@@ -119,6 +120,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "OodlesDemo03"
+    }
+  },
+  "defaultProject": "OodlesDemo03",
+  "cli": {
+    "analytics": "e13b2e65-27b6-4baa-9a9f-300be7b95e16"
+  }
 }
