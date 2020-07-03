@@ -3,8 +3,8 @@ export class Employee
     emp_Name: string;
     emp_Loc: string;
     emp_Email: string;
-    emp_Number: Number;
-    constructor(name, loc, email, number)
+    emp_Number: number;
+    constructor(name, loc, email, number,id)
     {
         this.emp_Name=name;
         this.emp_Loc=loc;

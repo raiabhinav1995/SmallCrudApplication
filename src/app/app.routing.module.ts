@@ -5,7 +5,8 @@ import { AddEmpComponent } from './add-emp/add-emp.component';
 
 const routes: Routes = [
   { path: 'emplist', component: EmpListComponent },
-  { path: 'addemp', component: AddEmpComponent }
+  { path: 'addemp', component: AddEmpComponent },
+  {path:'editemp/:index', component: AddEmpComponent}
 ];
 
 @NgModule({

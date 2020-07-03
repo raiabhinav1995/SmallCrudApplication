@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 //import { EmployeService } from '../employe.service';
 import { EmployeeService } from '../employee.service';
 import { Employee } from '../employee.model';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'addemp',
@@ -9,25 +10,47 @@ import { Employee } from '../employee.model';
   styleUrls: ['./add-emp.component.css']
 })
 export class AddEmpComponent implements OnInit {
+  name='';
+  location='';
+  email='';
+  mob:number;
+  id=-1;
   submitDetails()
   {
-    console.log('We are in submit details');
-    let inputValue1 = (<HTMLInputElement>document.getElementById('i1')).value;
-    let inputValue2 = (<HTMLInputElement>document.getElementById('i2')).value;
-    let inputValue3 = (<HTMLInputElement>document.getElementById('i3')).value;
-    let inputValue4 = (<HTMLInputElement>document.getElementById('i4')).value;
-    this.empService.addEmployee(new Employee(inputValue1,inputValue2,inputValue3,inputValue4));
+    const emp={ emp_Name: this.name, emp_Email: this.email, emp_Loc: this.location, emp_Number: this.mob }
+    if(this.id > -1)
+    {
+      this.empService.employeesArray.splice(this.id,1,emp);
+    }
+    else
+    {
+      this.empService.addEmployee(emp);
+    }
+    this.router.navigate(['/emplist']);
   }
   locationArray=
   [
     'Pune',
     'Bangalore',
     'Chennai',
-    'Hyderabad'  
+    'Hyderabad'
   ];
-  constructor(private empService:EmployeeService) { }
+  constructor(private empService:EmployeeService,private route:ActivatedRoute,private router:Router) { }
 
   ngOnInit() {
+    this.route.paramMap.subscribe((params)=>
+    {
+      if(params.get('index'))
+      {
+        let emp1=this.empService.employeesArray[+params.get('index')];
+        this.name=emp1.emp_Name;
+        this.location=emp1.emp_Loc;
+        this.email=emp1.emp_Email;
+        this.mob=emp1.emp_Number;
+        this.id= +params.get('index');
+        console.log(this.id);
+      }
+    });
   }
 
 }

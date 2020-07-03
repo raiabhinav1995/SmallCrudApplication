@@ -10,14 +10,14 @@
       <th>Delete</th>
     </thead>
     <tbody>
-      <tr *ngFor="let emp of empArray;let i = index">
+      <tr *ngFor="let emp of empArray;index as i;">
         <td>{{i+1}}</td>
         <td>{{emp.emp_Name}}</td>
         <td>{{emp.emp_Loc}}</td>
         <td>{{emp.emp_Email}}</td>
-        <td>{{emp.emp_Number}}</td>  
-        <td><button (click)="editEmp(emp)">Edit{{i+1}}</button></td>
-        <td><button (click)="deleteEmp(emp)">Delete{{i+1}}</button></td> 
+        <td>{{emp.emp_Number}}</td>
+        <td><button (click)="editEmp(i)">Edit{{i+1}}</button></td>
+        <td><button (click)="deleteEmp(emp)">Delete{{i+1}}</button></td>
       </tr>
     </tbody>
   </table>
