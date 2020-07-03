@@ -1,4 +1,6 @@
-
+<div class="form-group">
+<input type="text" class="form-control" placeholder="Search by Name" style="width: 300px;"[(ngModel)]="searchTerm">
+</div>
 <table style="width:100%">
     <thead>
       <th>Emp. Id</th>
@@ -10,9 +12,9 @@
       <th>Delete</th>
     </thead>
     <tbody>
-      <tr *ngFor="let emp of empArray;index as i;">
+      <tr *ngFor="let emp of empArray |employeefilter:searchTerm;index as i;">
         <td>{{i+1}}</td>
-        <td>{{emp.emp_Name}}</td>
+        <td>{{emp.emp_Name|uppercase}}</td>
         <td>{{emp.emp_Loc}}</td>
         <td>{{emp.emp_Email}}</td>
         <td>{{emp.emp_Number}}</td>
